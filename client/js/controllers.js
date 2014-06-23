@@ -13,14 +13,14 @@ var myApp = angular.module('myApp')
 
         $scope.updateUser = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'angular-only/client/views/user.html',
+                templateUrl: 'my-angularjs-examples/client/views/user.html',
                 controller: 'NewUserController'
             });
         }
 
         $scope.editUser = function (userId) {
             var modalInstance = $modal.open({
-                templateUrl: 'angular-only/client/views/user.html',
+                templateUrl: 'my-angularjs-examples/client/views/user.html',
                 controller: 'EditUserController',
                 resolve: {
                     editableUserId: function () {
