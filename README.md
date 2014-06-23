@@ -1,7 +1,7 @@
 my-angularjs-examples
 =====================
 
-My personal AngularJs playground.
+My personal AngularJS playground.
 
 Got examples for:<br>
 1. Create, Update, Delete actions on a table<br>
