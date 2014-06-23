@@ -1,0 +1,24 @@
+{
+  "name": "angular-only",
+  "version": "0.0.0",
+  "authors": [
+    "chenop"
+  ],
+  "main": "client/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.17",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.2.17",
+    "jquery": "~2.1.1",
+    "angular-boostrap-ui": "~0.11.0",
+    "angular-animate": "~1.2.17"
+  }
+}

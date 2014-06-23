@@ -1,0 +1,39 @@
+<div class="container-fluid" ng-controller="TableController">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h1 class="page-header">Users</h1>
+
+            <div class="col-sm-6">
+                <label class="control-label">Search:</label>
+                <input ng-model="searchString" type="text">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-sm pull-right" ng-click="updateUser()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-5">First Name</th>
+                        <th class="col-sm-5">Last Name</th>
+                        <th class="col-sm-2">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="user in users | filter:searchString">
+                        <td class="col-sm-4">{{user.firstName}}</td>
+                        <td class="col-sm-4">{{user.lastName}}</td>
+                        <td class="col-sm-4">
+                            <button ng-click="deleteUser(user.id)" class="col-sm-3 btn btn-xs action-button"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button ng-click="editUser(user.id)" class="col-sm-3 btn btn-xs action-button"><i class="glyphicon glyphicon-edit"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
