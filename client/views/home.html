@@ -10,7 +10,7 @@
 <div class="jumbotron">
 
     <div ng-controller="WelcomeController">
-        <h1>Hello, {{userName}}!</h1>
+        <h1>Hello, {{dataService.getUsername()}}!</h1>
         <p>{{greeting}}</p>
     </div>
     <div class="col-sm-3 align-center">

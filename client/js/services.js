@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp')
     .factory('dataService', function () {
         var _idCounter = 2;
+        var username = 'Guest';
         var users = [
             {
                 'id' : 0,
@@ -60,11 +61,22 @@ var myApp = angular.module('myApp')
             return users[foundKey];
         }
 
+        function getUsername() {
+            return username;
+        }
+
+        function setUsername(username1) {
+            username = username1;
+        }
+
         return {
             fetchTableData: fetchTableData
             , updateUser: updateUser
             , getUser: getUser
             , deleteUser: deleteUser
+            , getUsername: getUsername
+            , setUsername: setUsername
+
         }
     })
     .factory('alertService', function ($rootScope) {

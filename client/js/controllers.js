@@ -1,8 +1,8 @@
 var myApp = angular.module('myApp')
 
-    .controller('WelcomeController', function ($scope) {
+    .controller('WelcomeController', function ($scope, dataService) {
         $scope.greeting = 'This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.';
-        $scope.userName = 'Chen';
+        $scope.dataService = dataService;
     })
     .controller('TableController', function ($scope, $modal, dataService) {
         $scope.users = dataService.fetchTableData();
@@ -65,6 +65,9 @@ var myApp = angular.module('myApp')
             $modalInstance.dismiss('canceled');
         }
     })
+    .controller('FormController', function ($scope) {
+
+    })
     .controller('AlertButtonController', function ($scope, alertService, $timeout) {
         $scope.showAlert = function () {
             alertService.add("success", "This is a warning.");
@@ -78,6 +81,26 @@ var myApp = angular.module('myApp')
             alertService.remove(index);
         }
     })
-    .controller('FormController', function() {
+    .controller('LinkedIn', function($scope, dataService, alertService, $timeout) {
+        $scope.liAuth = function() {
+            if (!IN.User.isAuthorized()) {
+                IN.UI.Authorize().place();
+            }
+            else {
+                IN.API.Profile("me").fields(["firstName","lastName","headline","summary","location","educations","skills"]).result(function(result) {
+                    $scope.$apply(function() {
+                        console.log("results?");
+                        var firstName = result.values[0].firstName;
+                        var headline = result.values[0].headline;
 
+                        dataService.setUsername(firstName);
+
+                        alertService.add("success", "Welcome " + firstName + " - Your job is: " + headline);
+                        $timeout(function () {
+                            alertService.remove();
+                        }, 3000);
+                    })
+                });
+            }
+        }
     })
